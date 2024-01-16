@@ -234,7 +234,7 @@ namespace listWithMain
     }
 
     template <class T>
-    Node<T> *&Search(Node<T> *head, T elem)
+    Node<T> *Search(Node<T> *head, T elem)
     {
         Node<T> *p = head;
         while (p->next && p->next->data <= elem)
@@ -455,7 +455,7 @@ namespace doublyList
     }
 
     template <class T>
-    Node_d<T> *&Search(Node_d<T> *head, T elem)
+    Node_d<T> *Search(Node_d<T> *head, T elem)
     {
         Node_d<T> *p = head;
         while (p->next && p->next->data <= elem)
@@ -681,7 +681,7 @@ namespace doublyListWithMain
     }
 
     template <class T>
-    Node_d<T> *&Search(Node_d<T> *head, T elem)
+    Node_d<T> *Search(Node_d<T> *head, T elem)
     {
         Node_d<T> *p = head;
         while (p->next && p->next->data <= elem)
