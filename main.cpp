@@ -1,5 +1,19 @@
 #include "All.hpp"
 
+
+// namespace list
+// namespace listWithMain
+// namespace doublyList
+// namespace doublyListWithMain
+// namespace masStack
+// namespace listStack
+// namespace masQueue
+// namespace listQueue
+// namespace binTree
+// namespace binSrchTree
+// namespace avlTree
+
+
 int main()
 {
     Node<int> *list = nullptr;
