@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <windows.h>
+
 using namespace std;
 template <class T>
 class Node
@@ -23,6 +25,7 @@ namespace list
     {
         head = nullptr;
     }
+
     // 2.	Проверка на пустоту.
     template <class T>
     bool isEmpty(Node<T> *&head)
@@ -62,6 +65,7 @@ namespace list
         delete p;
         p = nullptr;
     }
+
     // 	после заданного элемента (заданный элемент определяется указателем).
     template <class T>
     void DeleteAfterNode(Node<T> *&pNode)
@@ -72,6 +76,7 @@ namespace list
         delete p;
         p = nullptr;
     }
+
     // поиск места для списка
     template <class T>
     Node<T> *Search(Node<T> *head, T elem)
@@ -89,7 +94,6 @@ namespace list
     template <class T>
     void CreateListInDirect(Node<T> *&head, vector<T> elems)
     {
-
         AddToHead(head, elems[0]);
         Node<T> *tail = head;
         for (size_t i = 1; i < elems.size(); ++i)
@@ -98,6 +102,7 @@ namespace list
             tail = tail->next;
         }
     }
+
     // 	в обратном порядке;
     template <class T>
     void CreateReversedList(Node<T> *&head, vector<T> elems)
@@ -362,7 +367,7 @@ namespace doublyList
         }
         p->next = p->prev = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     // 	перед заданным элементом (заданный элемент определяется указателем).
@@ -381,7 +386,7 @@ namespace doublyList
         }
         p->next = p->prev = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     //     5.	Создание списка:
@@ -464,6 +469,7 @@ namespace doublyList
         }
         return p;
     }
+
     // 6.	Печать списка в прямом
     template <class T>
     void PrintList(Node_d<T> *head)
@@ -476,6 +482,7 @@ namespace doublyList
         }
         cout << endl;
     }
+
     // 6.	Печать списка в обратном направлении.
     template <class T>
     void PrintListInReverse(Node_d<T> *tail)
@@ -500,7 +507,7 @@ namespace doublyList
         Node_d<T> *p = head;
         p->next = p->prev = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     template <class T>
@@ -520,6 +527,7 @@ namespace doublyList
         delete p;
         p = nullptr;
     }
+
     template <class T>
     void ClearList2(Node_d<T> *&head, Node_d<T> *&tail)
     {
@@ -561,6 +569,7 @@ namespace doublyListWithMain
         p->prev = pNode;
         p->next->prev = p;
     }
+
     // 	перед заданным элементом (заданный элемент определяется указателем)
     template <class T>
     void AddBeforeNode(Node_d<T> *pNode, T elem)
@@ -572,6 +581,7 @@ namespace doublyListWithMain
         p->next = pNode;
         p->prev->next = p;
     }
+
     //     4.	Удаление элемента из списка:
     // 	после заданного элемента (заданный элемент определяется указателем).
     template <class T>
@@ -586,7 +596,7 @@ namespace doublyListWithMain
         }
         p->next = p->prev = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     // 	перед заданным элементом (заданный элемент определяется указателем).
@@ -602,8 +612,9 @@ namespace doublyListWithMain
         }
         p->next = p->prev = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
+
     // 	текущего элемента.
     template <class T>
     void DeleteCurrentNode(Node_d<T> *&pNode, Node_d<T> *&head)
@@ -690,6 +701,7 @@ namespace doublyListWithMain
         }
         return p;
     }
+
     // 6.	Печать списка в прямом
     template <class T>
     void PrintList(Node_d<T> *head)
@@ -773,6 +785,7 @@ namespace masStack
             stack.astack[stack.top] = elem;
         }
     }
+
     // 5.	Удаление элемента из стека
     template <class T>
     void Pop(Astack<T> &stack)
@@ -844,15 +857,16 @@ namespace listStack
         p->next = stack.top;
         stack.top = p;
     }
+
     // 5.	Удаление элемента из стека
     template <class T>
     void Pop(Tstack<T> &stack)
     {
         Node<T> *p = stack.top;
         stack.top = stack.top->next;
-        p->next = 0;
+        p->next = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     // 6.	Извлечение элемента из стека
@@ -1129,7 +1143,7 @@ namespace listQueue
     {
         while (!IsEmpty(q))
         {
-            Deque(q);
+            delToQueue(q);
         }
     }
 
@@ -1159,7 +1173,7 @@ namespace listQueue
         q.head = q.head->next;
         p->next = nullptr;
         delete p;
-        p = 0;
+        p = nullptr;
     }
 
     //   5. Проверка на пустоту
@@ -1273,6 +1287,7 @@ namespace binTree
         }
         return canAttach;
     }
+
     template <class T>
     bool AttachRight(TreeNode<T> *&root, T elem)
     {
@@ -1289,24 +1304,25 @@ namespace binTree
     template <class T>
     bool AttachLeftSubtree(TreeNode<T> *root, TreeNode<T> *subtree)
     {
-        bool canAtt = false;
+        bool canAttach = false;
         if (root->left == nullptr)
         {
             root->left = subtree;
-            canAtt = true;
+            canAttach = true;
         }
-        return canAtt;
+        return canAttach;
     }
+
     template <class T>
     bool AttachRightSubtree(TreeNode<T> *root, TreeNode<T> *subtree)
     {
-        bool canAtt = false;
+        bool canAttach = false;
         if (root->right == nullptr)
         {
             root->right = subtree;
-            canAtt = true;
+            canAttach = true;
         }
-        return canAtt;
+        return canAttach;
     }
 
     // 9. Отсоединение от корня бинарного дерева левого или правого поддерева.
@@ -1316,12 +1332,14 @@ namespace binTree
         leftsubtree = root->left;
         root->left = nullptr;
     }
+
     template <class T>
     void DetachRightSubtree(TreeNode<T> *root, TreeNode<T> *&rightsubtree)
     {
         rightsubtree = root->right;
         root->right = nullptr;
     }
+
     template <class T>
     TreeNode<T> *DetachLeftSubtree(TreeNode<T> *root)
     {
@@ -1353,6 +1371,7 @@ namespace binTree
             CopyTree(root->right, newroot->right);
         }
     }
+
     // 10. Вернуть копию левого или правого поддерева корня бинарного дерева.
     template <class T>
     TreeNode<T> *GetLeftSubtree(TreeNode<T> *root)
@@ -1366,6 +1385,7 @@ namespace binTree
             CopyTree(root->left, newroot);
         return newroot;
     }
+
     template <class T>
     TreeNode<T> *GetRightSubtree(TreeNode<T> *root)
     {
@@ -1386,20 +1406,21 @@ namespace binTree
     {
         Queue<T> q;
         Init(q);
-        Enque(q, root);
+        addToQueue(q, root);
         while (!IsEmpty(q))
         {
             TreeNode<T> *cur = Peek(q);
             cout << cur->data << endl;
             if (cur->left)
-                Enque(q, cur->left);
+                addToQueue(q, cur->left);
             if (cur->right)
-                Enque(q, cur->right);
-            Deque(q);
+                addToQueue(q, cur->right);
+            delToQueue(q);
         }
         ClearQueue(q);
     }
-    // 17)	Обход узлов бинарного дерева в прямом, симметричном или обратном порядке.
+
+    // 17)	Обход узлов бинарного дерева в прямом, обратном или симметричном порядке.
     // 1. Префиксный, прямой
     template <class T>
     void Preorder(TreeNode<T> *root)
@@ -1548,17 +1569,17 @@ namespace binSrchTree
     template <class T>
     void deleteNode(TreeNode<T> *&pNode)
     {
-        if (pNode->left == 0 && pNode->right == 0)
+        if (pNode->left == nullptr && pNode->right == nullptr)
         {
             delete pNode;
             pNode = nullptr;
         }
-        else if (pNode->left == 0 || pNode->right == 0)
+        else if (pNode->left == nullptr || pNode->right == nullptr)
         {
             TreeNode<T> *delNode = pNode;
-            if (pNode->left != 0)
+            if (pNode->left != nullptr)
                 pNode = pNode->left;
-            if (pNode->right != 0)
+            if (pNode->right != nullptr)
                 pNode = pNode->right;
             delete delNode;
         }
@@ -1690,7 +1711,7 @@ namespace avlTree
         return q;
     }
 
-    // 27) Левый простые поворотыи
+    // 27) Левый простые повороты
     template <class T>
     avlNode<T> *LL_rotate(avlNode<T> *q)
     {
@@ -1725,7 +1746,7 @@ namespace avlTree
     template <class T>
     avlNode<T> *insert(avlNode<T> *pNode, T elem)
     {
-        if (pNode == 0)
+        if (pNode == nullptr)
         {
             pNode = new avlNode<T>(elem);
             return Balance(pNode);
@@ -1746,7 +1767,7 @@ namespace avlTree
     template <class T>
     avlNode<T> *removeMin(avlNode<T> *p)
     {
-        if (p->left == 0)
+        if (p->left == nullptr)
             return p->right;
         p->left = removeMin(p->left);
         return Balance(p);
